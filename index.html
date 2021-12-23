@@ -28,7 +28,7 @@ body { margin: 0; padding: 0; }
         　　　　　　　　　　　　　　　　　　　　　'tileSize': 256 ,
 	          'attribution': 'OpenStreetMap'
       　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　},
-             'raster-tiles': {
+                 'raster-tiles': {
                     'type': 'raster',
                     'tiles': [
                         'https://dronebird.github.io/oam_sagamihara20211215aoyamauniv1155mapconcierge00arw01/xyztiles/{z}/{x}/{y}.png'
@@ -42,13 +42,13 @@ body { margin: 0; padding: 0; }
             'layers': [
                 {
                     'id': 'lowest-background',
-                    'source': 'z',
+                    'source': 'OSM',
                     'type': 'raster'
                 },
                 {
                     'id': 'simple-tiles',
                     'type': 'raster',
-                    'source': 'OSM',
+                    'source': 'raster-tiles',
                     'minzoom': 0,
                     'maxzoom': 22
                 }
