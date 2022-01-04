@@ -20,16 +20,11 @@ body { margin: 0; padding: 0; }
         style: {
             'version': 8,
             'sources': {
-               import './index.css'
-import 'maplibre-gl/dist/maplibre-gl.css'
-import { Map } from 'maplibre-gl'
-
-new Map({
-  container: 'mapid',
-  style: 'https://tile.openstreetmap.jp/styles/maptiler-basic-ja/style.json',
-  center: [140.084556, 36.104611],
-  zoom: 10,
-})
+              'OSM': {
+        　　　　　　　　　　　　　　　　　　　　　'type': 'vector',
+        　　　　　　　　　　　　　　　　　　　　 'url': 'https://tile.openstreetmap.jp/styles/maptiler-basic-ja/style.json',
+	          'attribution': 'OpenStreetMap'
+      　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　},
                  'raster-tiles': {
                     'type': 'raster',
                     'tiles': [
