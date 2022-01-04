@@ -20,10 +20,16 @@ body { margin: 0; padding: 0; }
         style: {
             'version': 8,
             'sources': {
-                'mapbox-streets': {
-    'type': 'vector',
-    'url': 'mapbox.mapbox-streets-v8'
-}
+               import './index.css'
+import 'maplibre-gl/dist/maplibre-gl.css'
+import { Map } from 'maplibre-gl'
+
+new Map({
+  container: 'mapid',
+  style: 'https://tile.openstreetmap.jp/styles/maptiler-basic-ja/style.json',
+  center: [140.084556, 36.104611],
+  zoom: 10,
+})
                  'raster-tiles': {
                     'type': 'raster',
                     'tiles': [
