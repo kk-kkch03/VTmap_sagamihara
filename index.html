@@ -20,13 +20,9 @@ body { margin: 0; padding: 0; }
         style: {
             'version': 8,
             'sources': {
-                'OSM': {
-        　　　　　　　　　　　　　　　　　　　　　'type': 'raster',
-        　　　　　　　　　　　　　　　　　　　　　'tiles': [
-		       'http://a.tile.openstreetmap.org/{z}/{x}/{y}.png',
-		       'https://b.tile.openstreetmap.org/{z}/{x}/{y}.png'
-		    ],
-        　　　　　　　　　　　　　　　　　　　　　'tileSize': 256 ,
+              'OSM': {
+        　　　　　　　　　　　　　　　　　　　　　'type': 'vector',
+        　　　　　　　　　　　　　　　　　　　　 'url': 'https://tile.openstreetmap.jp/styles/maptiler-basic-ja/style.json',
 	          'attribution': 'OpenStreetMap'
       　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　},
                  'raster-tiles': {
@@ -43,7 +39,7 @@ body { margin: 0; padding: 0; }
             'layers': [
                 {
                     'id': 'lowest-background',
-                    'source': 'OSM',
+                    'source': 'mapbox-streets',
                     'type': 'raster'
                 },
                 {
