@@ -1,60 +1,64 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>VTmap 相模原</title>
-<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-<link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet">
-<script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
-<style>
-body { margin: 0; padding: 0; }
-#map { position: absolute; top: 0; bottom: 0; width: 100%; }
-</style>
-</head>
-<body>
-<div id="map"></div>
-<script>
-	mapboxgl.accessToken = 'pk.eyJ1Ijoia29oMDMwNiIsImEiOiJja3duaHJqbHgybWZyMnFxYm00andpa2NuIn0.qDAAj-3plHU75KhHdGW0MQ';
-    const map = new mapboxgl.Map({
-        container: 'map', // container ID
-        style: {
-            'version': 8,
-            'sources': {
-              'OSM': {
-        　　　　　　　　　　　　　　　　　　　　　'type': 'vector',
-        　　　　　　　　　　　　　　　　　　　　 'url': 'https://tile.openstreetmap.jp/styles/maptiler-basic-ja/style.json',
-	          'attribution': 'OpenStreetMap'
-      　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　},
-                 'raster-tiles': {
-                    'type': 'raster',
-                    'tiles': [
-                        'https://dronebird.github.io/oam_sagamihara20211215aoyamauniv1155mapconcierge00arw01/xyztiles/{z}/{x}/{y}.png'
-                    ],
-                    'tileSize': 256,
-                    'attribution':
-                        'Map tiles by <a target="_top" rel="noopener" href="http://furuhashilab.com/">Furuhashi Lab.</a>, under <a target="_top" rel="noopener" href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>, under <a target="_top" rel="noopener" href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>'
-              }
-            },
-            
-            'layers': [
-                {
-                    'id': 'lowest-background',
-                    'source': 'mapbox-streets',
-                    'type': 'raster'
-                },
-                {
-                    'id': 'simple-tiles',
-                    'type': 'raster',
-                    'source': 'raster-tiles',
-                    'minzoom': 0,
-                    'maxzoom': 22
-                }
-            ]
-        },
-      center: [139.40289974212644, 35.566392107579524], // starting position
-      zoom: 14 // starting zoom
-    });
-</script>
+  <head>
+    <meta charset="utf-8" />
+    <title>東京災害マップ</title>
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+   
+<script src='https://unpkg.com/maplibre-gl@2.1.7/dist/maplibre-gl.js'></script>
+<link href='https://unpkg.com/maplibre-gl@2.1.7/dist/maplibre-gl.css' rel='stylesheet' />
 
-</body>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='map' style='width: 400px; height: 300px;'></div>
+    <script>
+      var map = new maplibregl.Map({
+        container: "map",
+        style: {
+          version: 8,
+          sources: {
+            "raster-tiles": {
+              type: "raster",
+              tiles: ["http://a.tile.openstreetmap.org/{z}/{x}/{y}.png"],
+              tileSize: 256,
+              attribution:
+                'Map tiles by <a target="_top" rel="noopener" href="http://stamen.com">Stamen Design</a>, under <a target="_top" rel="noopener" href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>, under <a target="_top" rel="noopener" href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>',
+            },
+            road: {
+              type: "vector",
+              tiles: [
+                "https://furuhashilab.github.io/2021gsc_ShogoHirasawa/road_VT/{z}/{x}/{y}.pbf",
+              ],
+              tileSize: 512,
+              },
+	　　　　　　　　　　　　　layers: [
+            {
+              id: "road",
+              type: "line",
+              "source-layer": "road_VT",
+              source: "road",
+              minzoom: 12,
+              maxzoom: 17,
+            }
+            });
+          }
+        );
+      });
+    </script>
+  </body>
 </html>
